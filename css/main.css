@@ -1,0 +1,14 @@
+html {
+    background-color: #B7B7B6;
+}
+	p.padding
+	{
+	padding-top:25px;
+	padding-bottom:25px;
+	padding-right:25px;
+	padding-left:25px;
+}
+#noborder {
+border:0px;
+}
+
