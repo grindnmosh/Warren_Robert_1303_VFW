@@ -29,10 +29,14 @@
 								<option value="Personal">Personal</option>
 								<option value="Business">Business</option>
 								<option value="Education">Education</option>
+								<option value="aloan">Auto Loan</option>
+								<option value="hloan">Mortgage</option>
+								<option value="rent">Rent</option>
+								<option value="other">Other</option>
 							</select>	
 						</li>
 					<li><label for="bname">Bill Name: </label><input type="text" id="bname"/></li>
-					<li><label for="prio">Priority: </label><input type="slider" id="prio"/></li>
+					<li><label for="prio">Priority: </label> Low <input type="range" min="1" max="5" value="1" /> High </li>
 					<li><label for="amt">Amount: </label><input type="text" id="amt"/></li>
 					<li><label for="due">Due Date: </label><input type="date" id="due"/></li>
 				</ul>
@@ -71,13 +75,15 @@
 					<li><label for="comments">Comments: </label><br><textarea id="comments"></textarea></li>	
 				</ul>	
 			</fieldset>
-		<input type="submit" value="Save Me"/>	
+		<input type="submit" value="Save Me"/>	<br> <br>
+		<link><a href = "index.html"><button type="submit" value="Back"/>Back</button></a></link><br>
 </article>
 <footer>
 	<br>
-	<link><a href = "index.html"> Back </a></link><br>
-	<center>
+	
+	<center>		
 		<p> Follow my <link><a href = "https://github.com/grindnmosh">github</a></link> for updates </p>
+		<p> Like my work? Follow me on <link><a href = "https://twitter.com/grindnmosh">Twitter</a></link></p>
     	<p>Designer:  Robert Warren</p>
     </center>
 </footer>
