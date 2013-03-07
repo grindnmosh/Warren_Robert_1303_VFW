@@ -25,52 +25,54 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 			<fieldset>
 				<legend> Bill Information </legend>
 				<ul>
-					<li>
-						<label for="btype">Bill Type: </label>
-							<select id="btype">
-								<option value="Utility">Utility</option>
-								<option value="Personal">Personal</option>
-								<option value="Business">Business</option>
-								<option value="Education">Education</option>
-								<option value="aloan">Auto Loan</option>
-								<option value="hloan">Mortgage</option>
-								<option value="rent">Rent</option>
-								<option value="other">Other</option>
-							</select>	
+					<li><label for="btype">Bill Type: </label>
+						<select id="btype">
+							<option value="Utility">Utility</option>
+							<option value="Personal">Personal</option>
+							<option value="Business">Business</option>
+							<option value="Education">Education</option>
+							<option value="aloan">Auto Loan</option>
+							<option value="hloan">Mortgage</option>								
+							<option value="rent">Rent</option>
+							<option value="other">Other</option>
+						</select>	
 					</li>
+					<br>
 					<li><label for="bname">Bill Name: </label><input type="text" id="bname"/></li>
+					<br>
 					<li><label for="prio">Priority: </label> Low <input type="range" min="1" max="5" value="1" /> High </li>
+					<br>
 					<li><label for="amt">Amount: </label><input type="text" id="amt"/></li>
+					<br>
 					<li><label for="due">Due Date: </label><input type="date" id="due" /></li>
+					<input type="hidden" name="billNumber" id="billNumber" value="00001" />
 				</ul>
 			</fieldset>
 			<fieldset>
 				<legend> Update Bills </legend>
-				<ul>
-					<li>
-						<ul>
-							<li><input type="radio" checked value="UnPaid" id="unpd" name="status"/><label for="pd">Unpaid </label></li>
-							<li><input type="radio" value="Paid" id="pd" name="status"/><label for="pd">Paid With: </label>
-								<select id="pdwith">
-									<optgroup label="Cash Payment Types">
-										<option value="Debit Card">Debit Card</option>
-										<option value="Cash">Cash</option>
-										<option value="Check">Check</option>
-									</optgroup>
-									<optgroup label="Credit Cards">
-										<option value="MasterCard">MasterCard</option>
-										<option value="Visa">Visa</option>
-										<option value="Discover">Discover</option>
-										<option value="American Express">American Express</option>
-										<option value="Other Card">Other Card</option>
-									</optgroup>		
-								</select>									
-							</li>
-						</ul>
+				<ul>			
+					<li><input type="radio" checked value="UnPaid" id="unpd" name="status"/><label for="pd">Unpaid </label></li>
+					<li><input type="radio" value="Paid" id="pd" name="status"/><label for="pd">Paid With: </label>
+						<select id="pdwith">
+							<optgroup label="Cash Payment Types">									
+								<option value="Debit Card">Debit Card</option>
+								<option value="Cash">Cash</option>
+								<option value="Check">Check</option>
+							</optgroup>
+							<optgroup label="Credit Cards">
+								<option value="MasterCard">MasterCard</option>
+								<option value="Visa">Visa</option>
+								<option value="Discover">Discover</option>
+								<option value="American Express">American Express</option>
+								<option value="Other Card">Other Card</option>
+							</optgroup>									
+						</select>									
 					</li>
+					<br>
 					<li><input type="checkbox" value="On Time" id="ontime"/><label for="ontime">On Time</label></li>
 					<li><input type="checkbox" value="Late" id="late"/><label for="late">Late</label></li>
 					<li><input type="checkbox" value="Late Fee" id="lfee"/><label for="lfee">Late Fee Imposed</label></li>
+					<br>
 					<li><label for="comments">Comments: </label><br><textarea id="comments"></textarea></li>	
 				</ul>	
 			</fieldset>

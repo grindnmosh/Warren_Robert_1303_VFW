@@ -7,3 +7,11 @@ Visual Frame Works
 I Owe, I Owe * Bill List
 https://github.com/grindnmosh/Warren_Robert_1303_VFW
 --->
+
+dropbox: https://www.dropbox.com/sh/8bkisi092jahhs9/0IygmesVE8?m
+github: https://github.com/grindnmosh/Warren_Robert_1303_VFW
+
+Week 1 video: http://youtu.be/7zpahaEZ380
+Week 2 video:
+Week 3 video:
+Week 4 video:
