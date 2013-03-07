@@ -1,40 +1,102 @@
+/*
+
+Robert Warren
+Term 1303
+Visual Frame Works
+I Owe, I Owe * Bill List
+https://github.com/grindnmosh/Warren_Robert_1303_VFW
+
+*/
+
 html {
     background-color: #B7B7B6;
 }
-h1 { text-align: center }
-h2 { text-align: center }
-p { text-align: center }
+body {
+	font-family: Arial, Helvetica, san-seriff;width: 545px;margin: auto;padding: 10px; color: black;
+}
+h1 { 
+	text-align: center;
+}
+h2 { 
+	text-align: center;
+	margin: 20px;
+	border: 2px solid black;
+}
+form {
+	color: blue;
+	margin: 20px;
+	border: 2px solid black;
+	background: white;
+}
+legend {
+	margin: 20px;
+	border: 2px solid black;
+}
+fieldset {
+	margin: 20px;
+	border: 2px solid blue;
+}
+p { 
+	text-align: center; 
+	line-height: 2em;
+}
+li { 
+	font-family: times;
+	line-height: 2em;
+}
+#btype {
+	background: lightgrey;
+	border: 1px solid grey;
+}
+#bname {
+	background: lightgrey;
+	border: 1px solid grey;
+}
+#amt {
+	background: lightgrey;
+	border: 1px solid grey;
+}
+#due {
+	background: lightgrey;
+	border: 1px solid grey;
+}
+}
+#pdwith {
+	background: lightgrey;
+	border: 1px solid grey;
+}
+#comments {
+	background: lightgrey;
+	border: 1px solid grey;
+}
 p.padding
 {
-padding-top:100px;
-padding-bottom:100px;
-padding-right:65px;
-padding-left:65px;
-}
-#noborder {
-border:0px;
+	padding:100px 65px 100px 65px;
 }
 a.likeAButton {
-  background-color:#67a0cf;
-  border:1px outset #2683cf;
-  color:#fff;
-  padding:3px 3px 3px 3px;
-  margin:1px;
-  text-decoration:none;
+	padding:3px 3px 3px 3px;
+	margin:1px;
+	text-decoration:none;
 }
 a.likeAButton:hover {
-  background-color:#5788af;
-  border:1px outset #2683cf;
-  color:#fcffdf;
-  padding:3px 3px 3px 3px;
-  margin:1px;
-  text-decoration:none;
+	padding:3px 3px 3px 3px;
+	margin:1px;
+	text-decoration:none;
 }
 a.likeAButton:active {
-  background-color:#67b4cf;
-  border:1px inset #1d659f;
-  color:#e0ffaf;
-  padding:4px 2px 2px 4px;
-  margin:1px;
-  text-decoration:none;
+	padding:4px 2px 2px 4px;
+	margin:1px;
+	text-decoration:none;
+}
+#saveMe {
+	margin-left: 100px;
+	display: inline;
+	background: green;
+}
+#resetMe {
+	margin-left: 150px;
+	background: red;
+}
+#back {
+	background: grey;
 }

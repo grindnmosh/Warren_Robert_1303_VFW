@@ -18,7 +18,7 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 	</head>
 	<body>
 		<hgroup>
-  			<h1><img src="img/brand.jpg" /></h1>
+  			<h1><img src="img/brand.jpg" border=3 /></h1>
 			<h2>Add Bill</h2>
 		</hgroup>
 		<form action="#" method="post">
@@ -37,13 +37,9 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 							<option value="other">Other</option>
 						</select>	
 					</li>
-					<br>
 					<li><label for="bname">Bill Name: </label><input type="text" id="bname" placeholder="Elec, Car, Netflix, etc" /></li>
-					<br>
 					<li><label for="prio">Priority: </label> Low <input type="range" min="1" max="5" value="1" /> High </li>
-					<br>
 					<li><label for="amt">Amount: </label><input type="text" id="amt" placeholder="$150.00" /></li>
-					<br>
 					<li><label for="due">Due Date: </label><input type="date" id="due" /></li>
 					<input type="hidden" name="billNumber" id="billNumber" value="00001" />
 					<input type="hidden" name="timeSaved" id="timeSaved" value="currentTime" />
@@ -77,9 +73,9 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 					<li><label for="comments">Comments: </label><br><textarea id="comments" placeholder="Leave comments or notes here...."></textarea></li>	
 				</ul>	
 			</fieldset>
-			<input type="button" value="Save Me"/>	<br> <br>
-			<input type="button" value="Reset Me"/>	<br> <br>
-			<a href = "index.html"><input type="button" value="Back"/></a><br>
+			<input type="button" value="Save Me" id="saveMe"/>
+			<input type="button" value="Reset Me" id="resetMe"/>	<br> <br>
+			<a href = "index.html"><input type="button" value="Back" id="back"/></a><br>
 		</form>	
 		<footer>
 			<br>
