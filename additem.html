@@ -38,11 +38,11 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 						</select>	
 					</li>
 					<br>
-					<li><label for="bname">Bill Name: </label><input type="text" id="bname"/></li>
+					<li><label for="bname">Bill Name: </label><input type="text" id="bname" placeholder="Elec, Car, Netflix, etc" /></li>
 					<br>
 					<li><label for="prio">Priority: </label> Low <input type="range" min="1" max="5" value="1" /> High </li>
 					<br>
-					<li><label for="amt">Amount: </label><input type="text" id="amt"/></li>
+					<li><label for="amt">Amount: </label><input type="text" id="amt" placeholder="$150.00" /></li>
 					<br>
 					<li><label for="due">Due Date: </label><input type="date" id="due" /></li>
 					<input type="hidden" name="billNumber" id="billNumber" value="00001" />
@@ -74,10 +74,11 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 					<li><input type="checkbox" value="Late" id="late"/><label for="late">Late</label></li>
 					<li><input type="checkbox" value="Late Fee" id="lfee"/><label for="lfee">Late Fee Imposed</label></li>
 					<br>
-					<li><label for="comments">Comments: </label><br><textarea id="comments"></textarea></li>	
+					<li><label for="comments">Comments: </label><br><textarea id="comments" placeholder="Leave comments or notes here...."></textarea></li>	
 				</ul>	
 			</fieldset>
 			<input type="button" value="Save Me"/>	<br> <br>
+			<input type="button" value="Reset Me"/>	<br> <br>
 			<a href = "index.html"><input type="button" value="Back"/></a><br>
 		</form>	
 		<footer>
