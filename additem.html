@@ -8,86 +8,81 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 -->
 <html>
 	<head>
-	<title>I Owe, I Owe * Bill List</title>
-	<link rel="stylesheet" href="css/main.css" type="text/css" />
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width"/>
-	<meta name="viewport" content="target-densitydpi=device-dpi" />
-	<meta name="HandheldFriendly" content="true"/>
-	<meta name="MobileOptimized" content="320"/>
-</head>
-<body>
-<hgroup>
-    <h1><img src="img/brand.jpg" /></h1>
-    	<h2>Add Bill</h2>
-</hgroup>
-<article>
-	<form action="#" method="post">
-		<fieldset>
-			<legend> Bill Information </legend>
-			<ul>
-				<li>
-					<label for="btype">Bill Type: </label>
-						<select id="btype">
-							<option value="Utility">Utility</option>
-							<option value="Personal">Personal</option>
-							<option value="Business">Business</option>
-							<option value="Education">Education</option>
-							<option value="aloan">Auto Loan</option>
-							<option value="hloan">Mortgage</option>
-							<option value="rent">Rent</option>
-							<option value="other">Other</option>
-						</select>	
+		<title>I Owe, I Owe * Bill List</title>
+		<link rel="stylesheet" href="css/main.css" type="text/css" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width"/>
+		<meta name="viewport" content="target-densitydpi=device-dpi" />
+		<meta name="HandheldFriendly" content="true"/>
+		<meta name="MobileOptimized" content="320"/>
+	</head>
+	<body>
+		<hgroup>
+  			<h1><img src="img/brand.jpg" /></h1>
+			<h2>Add Bill</h2>
+		</hgroup>
+		<form action="#" method="post">
+			<fieldset>
+				<legend> Bill Information </legend>
+				<ul>
+					<li>
+						<label for="btype">Bill Type: </label>
+							<select id="btype">
+								<option value="Utility">Utility</option>
+								<option value="Personal">Personal</option>
+								<option value="Business">Business</option>
+								<option value="Education">Education</option>
+								<option value="aloan">Auto Loan</option>
+								<option value="hloan">Mortgage</option>
+								<option value="rent">Rent</option>
+								<option value="other">Other</option>
+							</select>	
 					</li>
-				<li><label for="bname">Bill Name: </label><input type="text" id="bname"/></li>
-				<li><label for="prio">Priority: </label> Low <input type="range" min="1" max="5" value="1" /> High </li>
-				<li><label for="amt">Amount: </label><input type="text" id="amt"/></li>
-				<li><label for="due">Due Date: </label><input type="date" id="due" /></li>
-			</ul>
-		</fieldset>
-		<fieldset>
-			<legend> Update Bills </legend>
-			<ul>
-				<li>
-					<ul>
-						<li><input type="radio" checked value="UnPaid" id="unpd" name="status"/><label for="pd">Unpaid </label></li>
-						<li><input type="radio" value="Paid" id="pd" name="status"/><label for="pd">Paid With: </label>
-							<select id="pdwith">
-								<optgroup label="Cash Payment Types">
-									<option value="Debit Card">Debit Card</option>
-									<option value="Cash">Cash</option>
-									<option value="Check">Check</option>
-								</optgroup>
-								<optgroup label="Credit Cards">
-									<option value="MasterCard">MasterCard</option>
-									<option value="Visa">Visa</option>
-									<option value="Discover">Discover</option>
-									<option value="American Express">American Express</option>
-									<option value="Other Card">Other Card</option>
-								</optgroup>		
-							</select>									
-						</li>
+					<li><label for="bname">Bill Name: </label><input type="text" id="bname"/></li>
+					<li><label for="prio">Priority: </label> Low <input type="range" min="1" max="5" value="1" /> High </li>
+					<li><label for="amt">Amount: </label><input type="text" id="amt"/></li>
+					<li><label for="due">Due Date: </label><input type="date" id="due" /></li>
 				</ul>
-				</li>
-				<li> 
-					<ul>
-						<li><input type="checkbox" value="On Time" id="ontime"/><label for="ontime">On Time</label></li>
-						<li><input type="checkbox" value="Late" id="late"/><label for="late">Late</label></li>
-						<li><input type="checkbox" value="Late Fee" id="lfee"/><label for="lfee">Late Fee Imposed</label></li>
-					</ul>
-				</li>									
-				<li><label for="comments">Comments: </label><br><textarea id="comments"></textarea></li>	
-			</ul>	
-		</fieldset>
-	<input type="button" value="Save Me"/>	<br> <br>
-	<a href = "index.html"><input type="button" value="Back"/></a><br>
-</article>
-<footer>
-	<br>
-		<p> Follow my <a href = "https://github.com/grindnmosh">github</a> for updates </p>
-		<p> Like my work? Follow me on <a href = "https://twitter.com/grindnmosh">Twitter</a></p>
-    	<p>Designer:  Robert Warren</p>
-</footer>
-<script type="text/javascript" src="js/main.js"></script>
-</body>
+			</fieldset>
+			<fieldset>
+				<legend> Update Bills </legend>
+				<ul>
+					<li>
+						<ul>
+							<li><input type="radio" checked value="UnPaid" id="unpd" name="status"/><label for="pd">Unpaid </label></li>
+							<li><input type="radio" value="Paid" id="pd" name="status"/><label for="pd">Paid With: </label>
+								<select id="pdwith">
+									<optgroup label="Cash Payment Types">
+										<option value="Debit Card">Debit Card</option>
+										<option value="Cash">Cash</option>
+										<option value="Check">Check</option>
+									</optgroup>
+									<optgroup label="Credit Cards">
+										<option value="MasterCard">MasterCard</option>
+										<option value="Visa">Visa</option>
+										<option value="Discover">Discover</option>
+										<option value="American Express">American Express</option>
+										<option value="Other Card">Other Card</option>
+									</optgroup>		
+								</select>									
+							</li>
+						</ul>
+					</li>
+					<li><input type="checkbox" value="On Time" id="ontime"/><label for="ontime">On Time</label></li>
+					<li><input type="checkbox" value="Late" id="late"/><label for="late">Late</label></li>
+					<li><input type="checkbox" value="Late Fee" id="lfee"/><label for="lfee">Late Fee Imposed</label></li>
+					<li><label for="comments">Comments: </label><br><textarea id="comments"></textarea></li>	
+				</ul>	
+			</fieldset>
+			<input type="button" value="Save Me"/>	<br> <br>
+			<a href = "index.html"><input type="button" value="Back"/></a><br>
+		</form>	
+		<footer>
+			<br>
+			<p> Follow my <a href = "https://github.com/grindnmosh">github</a> for updates </p>
+			<p> Like my work? Follow me on <a href = "https://twitter.com/grindnmosh">Twitter</a> </p>
+    		<p> Designer:  Robert Warren </p>
+		</footer>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
 </html>
