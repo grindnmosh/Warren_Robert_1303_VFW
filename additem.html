@@ -21,7 +21,7 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
   			<h1><img src="img/brand.jpg" border=3 /></h1>
 			<h2>Add Bill</h2>
 		</hgroup>
-		<form action="#" method="post">
+		<form action="#" method="post" id="addBill">
 			<fieldset>
 				<legend> Bill Information </legend>
 				<ul>
@@ -38,7 +38,7 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 						</select>	
 					</li>
 					<li><label for="bname">Bill Name: </label><input type="text" id="bname" placeholder="Elec, Car, Netflix, etc" /></li>
-					<li><label for="prio">Priority: </label> Low <input type="range" min="1" max="5" value="1" /> High </li>
+					<li><label for="prio">Priority: </label> Low <input type="range" id="prio" min="1" max="5" value="1" /> High </li>
 					<li><label for="amt">Amount: </label><input type="text" id="amt" placeholder="$150.00" /></li>
 					<li><label for="due">Due Date: </label><input type="date" id="due" /></li>
 					<input type="hidden" name="billNumber" id="billNumber" value="00001" />
@@ -48,7 +48,7 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 			<fieldset>
 				<legend> Update Bills </legend>
 				<ul>			
-					<li><input type="radio" checked value="UnPaid" id="unpd" name="status"/><label for="pd">Unpaid </label></li>
+					<li><input type="radio" value="UnPaid" id="unpd" name="status"/><label for="pd">Unpaid </label></li>
 					<li><input type="radio" value="Paid" id="pd" name="status"/><label for="pd">Paid With: </label>
 						<select id="pdwith">
 							<optgroup label="Cash Payment Types">									
@@ -65,12 +65,10 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 							</optgroup>									
 						</select>									
 					</li>
-					<br>
-					<li><input type="checkbox" value="On Time" id="ontime"/><label for="ontime">On Time</label></li>
-					<li><input type="checkbox" value="Late" id="late"/><label for="late">Late</label></li>
-					<li><input type="checkbox" value="Late Fee" id="lfee"/><label for="lfee">Late Fee Imposed</label></li>
-					<br>
-					<li><label for="comments">Comments: </label><br><textarea id="comments" placeholder="Leave comments or notes here...."></textarea></li>	
+					<li><input type="checkbox" value="On Time" id="ontime" name="paymentTime" /><label for="ontime">On Time</label></li>
+					<li><input type="checkbox" value="Late" id="late" name="paymentTime" /><label for="late">Late</label></li>
+					<li><input type="checkbox" value="Late Fee" id="lfee" name="paymentTime" /><label for="lfee">Late Fee Imposed</label></li>
+					<li><label for="comments">Comments:</label><textarea id="textArea" placeholder="Leave comments or notes here...."></textarea></li>	
 				</ul>	
 			</fieldset>
 			<input type="button" value="Save Me" id="saveMe"/>

@@ -44,33 +44,19 @@ li {
 	font-family: times;
 	line-height: 2em;
 }
-#btype {
-	background: lightgrey;
-	border: 1px solid grey;
-}
 #bname {
 	background: lightgrey;
-	border: 1px solid grey;
 }
 #amt {
 	background: lightgrey;
-	border: 1px solid grey;
 }
 #due {
 	background: lightgrey;
-	border: 1px solid grey;
-}
-}
-#pdwith {
-	background: lightgrey;
-	border: 1px solid grey;
 }
 #comments {
 	background: lightgrey;
-	border: 1px solid grey;
 }
-p.padding
-{
+p.padding {
 	padding:100px 65px 100px 65px;
 }
 a.likeAButton {
@@ -82,6 +68,7 @@ a.likeAButton:hover {
 	padding:3px 3px 3px 3px;
 	margin:1px;
 	text-decoration:none;
+	border: 2px solid darkblue
 }
 a.likeAButton:active {
 	padding:4px 2px 2px 4px;
@@ -100,3 +87,4 @@ a.likeAButton:active {
 #back {
 	background: grey;
 }
+input.hasFocus {border: 2px solid darkblue};
