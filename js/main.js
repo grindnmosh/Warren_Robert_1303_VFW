@@ -8,7 +8,16 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 
 */
 
-
+var bnData = document.getElementById("bname");
+var costData = document.getElementById("amt");
+var importance = document.getElementById("prio");
+var whenData = document.getElementById("due");
+var costData = document.getElementById("amt");
+var anyNotes = document.getElementById("textArea");
+var checkBox = document.forms[0].paymentTime;
+var payer = document.forms[0].status;
+var anyNotes = document.getElementById("textArea");
+var saveSuccess = "Your Bill Is Saved!"
 var myField = document.getElementById("bname");
 var myAmt = document.getElementById("amt");
 var payIt = document.getElementById("due");
@@ -20,16 +29,6 @@ var thankYou = document.createElement("p");
 var myForm = document.getElementById("addBill");
 var thanksAlot = "Thank you for submitting your new bill!";
 var btData = document.getElementById("btype");
-var bnData = document.getElementById("bname");
-var costData = document.getElementById("amt");
-var importance = document.getElementById("prio");
-var whenData = document.getElementById("due");
-var costData = document.getElementById("amt");
-var anyNotes = document.getElementById("textArea");
-var checkBox = document.forms[0].paymentTime;
-var payer = document.forms[0].status;
-var anyNotes = document.getElementById("textArea");
-var saveSuccess = "Your Bill Is Saved!"
 
 var highlightBill = function() {
 	myField.setAttribute("class", "hasFocus")
@@ -96,12 +95,12 @@ var noNewBill = function() {
 };
 
 var getForm = function() {
-	localStorage.setItem("Bill Type: ", btData.value)
-	localStorage.setItem("Bill Name: ", bnData.value)
-	localStorage.setItem("Bill Amount: ", costData.value)
-	localStorage.setItem("Priority (1-5): ", importance.value)
-	localStorage.setItem("Due Date: ", whenData.value)
-	localStorage.setItem("Comments: ", anyNotes.value)
+	localStorage.setItem("bType", btData.value)
+	localStorage.setItem("Name", bnData.value)
+	localStorage.setItem("Amount", costData.value)
+	localStorage.setItem("Priority", importance.value)
+	localStorage.setItem("Due Date", whenData.value)
+	localStorage.setItem("Comments", anyNotes.value)
 	for(i=0, c=payer.length; i<c; i++) {
 		if(payer[i].checked) {
 			localStorage.setItem("Payment Status: ", payer[i].value)
@@ -116,7 +115,6 @@ var getForm = function() {
 		};
 	};
 	alert(saveSuccess);
-	//reset page somehow
 	
 	for(i=0, l=localStorage.length; i<l; i++) {
 		var category = localStorage.key(i);
@@ -136,22 +134,55 @@ var clearAll = function() {
 	};
 };
 
-var localSaves = function() {
-	localStorage.setItem("Bill Type", btData.value);
-	localStorage.setItem("Bill Name", bnData.value);
-	localStorage.setItem("Bill Amount", costData.value);
-	localStorage.setItem("Priority (1-5)", importance.value);
+
+// storing it in alpha order and calling it in the order saved not by the value name.
+var btSaves = function() {
+	localStorage.setItem("bType", btData.value);
+};
+
+var bnSaves = function() {
+	localStorage.setItem("Name", bnData.value);
+};
+
+var costSaves = function() {
+	localStorage.setItem("Amount", costData.value);
+};
+
+var prioSaves = function() {
+	localStorage.setItem("Priority", importance.value);
+};
+
+var dueSaves = function() {
 	localStorage.setItem("Due Date", whenData.value);
+};
+
+var comSaves = function() {
 	localStorage.setItem("Comments", anyNotes.value);
 };
 
-var autoRefill = function() {
+
+/*var autoRefill = function() {
 	for(i=0, l=localStorage.length; i<l; i++) {
 		var category = localStorage.key(i);
 		var input = localStorage.getItem(category)
-		console.log(localStorage.value = input);
+		localStorage.value = input;
 	};
+};*/
+
+var bnRefill = function() {
+	var bnDataKey = localStorage.key("Name");
+	var bnDataValue = localStorage.getItem(bnDataKey);
+	bnData.value = bnDataValue;
 };
+
+
+btData.addEventListener("blur", btSaves);
+bnData.addEventListener("blur", bnSaves);
+costData.addEventListener("blur", costSaves);
+importance.addEventListener("change", prioSaves);
+whenData.addEventListener("blur", dueSaves);
+anyNotes.addEventListener("blur", comSaves);
+bnRefill()
 
 
 myField.addEventListener("focus", highlightBill);
@@ -162,17 +193,17 @@ payIt.addEventListener("focus", highlightPayable);
 payIt.addEventListener("blur", normBordPayable);
 takeNote.addEventListener("focus", highlightNotable);
 takeNote.addEventListener("blur", normBordNotable);
-btData.addEventListener("blur", localSaves);
-bnData.addEventListener("blur", localSaves);
-costData.addEventListener("blur", localSaves);
-importance.addEventListener("change", localSaves);
-whenData.addEventListener("blur", localSaves);
-anyNotes.addEventListener("blur", localSaves);
+btData.addEventListener("blur", btSaves);
+bnData.addEventListener("blur", bnSaves);
+costData.addEventListener("blur", costSaves);
+importance.addEventListener("change", prioSaves);
+whenData.addEventListener("blur", dueSaves);
+anyNotes.addEventListener("blur", comSaves);
 saveBill.addEventListener("click", getForm);
 clearBill.addEventListener("click", clearAll);
 
 
-autoRefill();
+
 
 
  
