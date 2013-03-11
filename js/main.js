@@ -32,6 +32,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	var thanksAlot = "Thank you for submitting your new bill!";
 	var btData = document.getElementById("btype"); 
 	var localClear = document.getElementById("clearAllData");
+	var frequency = ["--select frequency of bill--", "one time", "weekly", "biweekly", "monthly", "quarterly", "annually"];
 	
 	function displaySavedInfo(field) {
 	var theBill = document.getElementById(field);
@@ -76,6 +77,21 @@ window.addEventListener("DOMContentLoaded", function() {
 	function normBordNotable() {
 		takeNote.removeAttribute("class", "hasFocus");
 		return normBordNotable;
+	};
+	
+	function addBillType() {
+		var grabForm = document.getElementsByTagName("form"[0]);
+		var grabSelect = displaySavedInfo("top");
+		var newSelect = document.createElement("select");
+			newSelect.setAttribute("id", "freqs");
+		for(var i=0, f=frequency.length; i<f; i++) {
+			var newOption = document.createElement("option");
+			var insertText = frequency[i];
+			newOption.setAttribute("value", insertText);
+			newOption.innerHTML = insertText;
+			newSelect.appendChild(newOption);
+		};
+		grabSelect.appendChild(newSelect);
 	};
 	
 	function getSelectedRadio() {
@@ -139,6 +155,7 @@ window.addEventListener("DOMContentLoaded", function() {
     		item.costData = ["Amount: ", displaySavedInfo("amt").value];
     		item.importance = ["Priority: ", displaySavedInfo("prio").value];
    		 	item.whenData = ["Due: ", displaySavedInfo("due").value];
+   		 	item.freqs = ["frequency: ", displaySavedInfo("freqs").value];
     		item.paid = ["Paid: ", paidValue];
    		 	item.paymentCard = ["Paid with: ", paymentValue];
    		 	item.when = ["On time? Late fee?: ", ptValue];
@@ -259,7 +276,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	magicFill();*/
 
 
-	
+	addBillType();
 	var displayLink = displaySavedInfo("displayLink");
 	displayLink.addEventListener("click", getBill);
 	myField.addEventListener("focus", highlightBill);
@@ -273,7 +290,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	saveBill.addEventListener("click", getForm);
 	clearBill.addEventListener("click", clearAll);
 	localClear.addEventListener("click", cleanHouse);
-
+	
 });
 
 
