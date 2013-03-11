@@ -14,10 +14,10 @@ window.addEventListener("DOMContentLoaded", function() {
 	var costData = document.getElementById("amt");
 	var importance = document.getElementById("prio");
 	var whenData = document.getElementById("due");
-	var costData = document.getElementById("amt");
-	var anyNotes = document.getElementById("textArea");
+	var comData = document.getElementById("textArea");
 	var checkBox = document.forms[0].paymentTime;
 	var payer = document.forms[0].status;
+	var cardCash = document.getElementById("pdwith");
 	var anyNotes = document.getElementById("textArea");
 	var saveSuccess = "Your Bill Is Saved!"
 	var myField = document.getElementById("bname");
@@ -32,78 +32,152 @@ window.addEventListener("DOMContentLoaded", function() {
 	var thanksAlot = "Thank you for submitting your new bill!";
 	var btData = document.getElementById("btype"); 
 	var localClear = document.getElementById("clearAllData");
-
-	var highlightBill = function() {
+	
+	function displaySavedInfo(x) {
+	var theBill = document.getElementById(x);
+	return theBill
+	};
+	
+	function highlightBill() {
 		myField.setAttribute("class", "hasFocus");
 		return highlightBill;
 	};
 
-	var highlightAmt = function() {
+	function highlightAmt() {
 		myAmt.setAttribute("class", "hasFocus");
 		return highlightAmt;
 	};
 
-	var highlightPayable = function() {
+	function highlightPayable() {
 		payIt.setAttribute("class", "hasFocus");
 		return highlightPayable;
 	};
 
-	var highlightNotable = function() {
+	function highlightNotable() {
 		takeNote.setAttribute("class", "hasFocus");
 		return highlightNotable;
 	};		
 
-	var normBordBill = function() {
+	function normBordBill() {
 		myField.removeAttribute("class", "hasFocus");
 		return normBordBill;
 	};
 
-	var normBordAmt = function() {
+	function normBordAmt() {
 		myAmt.removeAttribute("class", "hasFocus");
 		return normBordAmt;
 	};
 
-	var normBordPayable = function() {
+	function normBordPayable() {
 		payIt.removeAttribute("class", "hasFocus");
 		return normBordPayable;
 	};
 
-	 normBordNotable = function() {
+	function normBordNotable() {
 		takeNote.removeAttribute("class", "hasFocus");
 		return normBordNotable;
 	};
-
-	var getForm = function() {
-		localStorage.setItem("bType", btData.value)
-		localStorage.setItem("Name", bnData.value)
-		localStorage.setItem("Amount", costData.value)
-		localStorage.setItem("Priority", importance.value)
-		localStorage.setItem("Due Date", whenData.value)
-		localStorage.setItem("Comments", anyNotes.value)
-		for(i=0, c=payer.length; i<c; i++) {
-			if(payer[i].checked) {
-				localStorage.setItem("Payment Status: ", payer[i].value)
+	
+	function getSelectedRadio() {
+		var radioSelected = document.forms[0].status;
+		for(i=0; i<radioSelected.length; i++) {
+			if(radioSelected[i].checked) {
+				paidValue = radioSelected[i].value;
 			};
 		};
-		if(pd.checked) {
-			localStorage.setItem("Payment Method: ", pdwith.value)
-		};
-		for(i=0, c=checkBox.length; i<c; i++) {
-			if(checkBox[i].checked) {
-				localStorage.setItem("On Time or Late? Fee?: ", checkBox[i].value)
-			};
-		};
-		alert(saveSuccess);
-		saveMe.setAttribute("type", "reset");	
-		for(i=0, l=localStorage.length; i<l; i++) {
-			var category = localStorage.key(i);
-			var input = localStorage.getItem(category)
-			console.log(category + ": " + input);
-		};	
-		return getform;
 	};
+	
+	function getCheckBoxValue() {
+		var checkBoxesSelected = document.forms[0].paymentTime;
+		for(i=0; i<checkBoxesSelected.length; i++) {
+			if(checkBoxesSelected[i].checked) {
+				ptValue = checkBoxesSelected[i].value
+			} else {
+				ptValue = " "
+			};
+		};
+	};
+	
+	function howPaid() {
+		var paidWith = document.getElementById("pdwith");
+		if(pd.checked) {
+    		paymentValue = paidWith.value;
+    	} else {
+    		paymentValue = "N/A";
+    	};	
+	};
+	
+	function switchPages(status) {
+		switch(status) {
+			case "on":
+				displaySavedInfo("addBill").style.display = "none";
+				displaySavedInfo("clearAllData").style.display = "block";
+				displaySavedInfo("displayLink").style.display = "none";
+				displaySavedInfo("addNewBill").style.display = "block";
+				displaySavedInfo("footer").style.display = "none";
+				break;
+			case "off":
+				displaySavedInfo("addBill").style.display = "block";
+				displaySavedInfo("clearAllData").style.display = "block";
+				displaySavedInfo("displayLink").style.display = "block";
+				displaySavedInfo("addAnotherBill").style.display = "none";
+				displaySavedInfo("bill").style.display = "none";
+				break;
+			default:
+				return false;
+		};
+	};
+	
+	function getForm() {
+		var id = "z"+(Math.floor(Math.random()*1000000001))
+		getSelectedRadio();
+		howPaid();
+		getCheckBoxValue();
+		var item = {};
+   			item.btData = ["Type: ", displaySavedInfo("btype").value];
+    		item.bnData = ["Name: ", displaySavedInfo("bname").value];
+    		item.costData = ["Amount: ", displaySavedInfo("amt").value];
+    		item.importance = ["Priority: ", displaySavedInfo("prio").value];
+   		 	item.whenData = ["Due: ", displaySavedInfo("due").value];
+    		item.paid = ["Paid: ", paidValue];
+   		 	item.paymentCard = ["Paid with: ", paymentValue];
+   		 	item.when = ["On time? Late fee?: ", ptValue];
+   		 	item.comData = ["Comments: ", displaySavedInfo("textArea").value];
+    	localStorage.setItem(id, JSON.stringify(item));
+    	alert(saveSuccess);
+  	 	saveMe.setAttribute("type", "reset");  
+    	return getForm;
+  	};
 
-	var clearAll = function() {
+	function getBill() {
+		switchPages("on"); 
+		if(localStorage.length === 0) {
+			alert("There is no data to view.");
+		};
+		var newForm = document.createElement("form");
+		newForm.setAttribute("id", "bill");
+		var newList = document.createElement("ul");
+		newForm.appendChild(newList);
+		document.body.appendChild(newForm);
+		displaySavedInfo("bill").style.display = "block";
+		for(i=0, l=localStorage.length; i<l; i++) {
+			var newItem = document.createElement("li");
+			newList.appendChild(newItem);
+			var category = localStorage.key(i);
+			var input = localStorage.getItem(category);
+			var totalData = JSON.parse(input);
+			var newSub = document.createElement("ul");
+			newItem.appendChild(newSub);
+			for(var d in totalData) {
+				var newSubList = document.createElement("li");
+				newSub.appendChild(newSubList);
+				var insertText = totalData[d][0] + " " + totalData[d][1];
+				newSubList.innerHTML = insertText;
+			};
+		};
+	};
+	
+	function clearAll() {
 		var areYouSure = confirm("Are you sure you want to clear the form and start over?");
 		if(areYouSure) {
 			resetMe.setAttribute("type", "reset");
@@ -118,18 +192,31 @@ window.addEventListener("DOMContentLoaded", function() {
 // storing it in alpha order and calling it in the order saved not by the value name. 
 //Used array numbers. even using loops did it out of order
 
-	var savedData = function() {
+	/*function savedData() {
 		localStorage.setItem("bType", btData.value);
 		localStorage.setItem("Name", bnData.value);
 		localStorage.setItem("Amount", costData.value);
 		localStorage.setItem("Priority", importance.value);
 		localStorage.setItem("Due Date", whenData.value);
 		localStorage.setItem("Comments", anyNotes.value);
+		for(i=0, c=payer.length; i<c; i++) {
+     		if(payer[i].checked) {
+        		localStorage.setItem("Payment Status: ", payer[i].value)
+    		};
+    	};
+    	if(pd.checked) {
+     		 localStorage.setItem("Payment Method: ", pdwith.value)
+  		};
+    	for(i=0, c=checkBox.length; i<c; i++) {
+    		if(checkBox[i].checked) {
+    			localStorage.setItem("On Time or Late? Fee?: ", checkBox[i].value)
+    		};
+		};
 		return savedData;
-	};
+	}; 
 
-	var magicFill = function() {
-		var btDataKey = localStorage.key(5);
+	function magicFill() {
+		var btDataKey = localStorage.key(8);
 		var btDataValue = localStorage.getItem(btDataKey);
 		btData.value = btDataValue;
 		var bnDataKey = localStorage.key(3);
@@ -138,7 +225,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		var costDataKey = localStorage.key(0);
 		var costDataValue = localStorage.getItem(costDataKey);
 		costData.value = costDataValue;
-		var prioDataKey = localStorage.key(4);
+		var prioDataKey = localStorage.key(7);
 		var prioDataValue = localStorage.getItem(prioDataKey);
 		importance.value = prioDataValue;
 		var dueDataKey = localStorage.key(2);
@@ -147,23 +234,35 @@ window.addEventListener("DOMContentLoaded", function() {
 		var comDataKey = localStorage.key(1);
 		var comDataValue = localStorage.getItem(comDataKey);
 		anyNotes.value = comDataValue;
+		payer.value = getSelectedRadio();
+		cardCash.value = howPaid();
+		checkBox.value = getCheckBoxValue();
 		return magicFill
-	};
-
-	var cleanHouse = function() {
+	};*/
+	
+	function cleanHouse() {
+		if(localStorage.length === 0) {
+			alert("There is no data to clear!!");
+		} else {
 		localStorage.clear();
-		return cleanHouse;
-	};
-
-	btData.addEventListener("blur", savedData);
+		alert("All bills are deleted")
+		window.location.reload();
+		};
+		return false;
+	};//updated with conditional per instruction
+	
+	
+	
+	/*btData.addEventListener("blur", savedData);
 	bnData.addEventListener("blur", savedData);
 	costData.addEventListener("blur", savedData);
 	importance.addEventListener("change", savedData);
 	whenData.addEventListener("blur", savedData);
 	anyNotes.addEventListener("blur", savedData);
-	magicFill()
-
-
+	magicFill();*/
+	
+	var displayLink = displaySavedInfo("displayLink");
+	displayLink.addEventListener("click", getBill);
 	myField.addEventListener("focus", highlightBill);
 	myField.addEventListener("blur", normBordBill);
 	myAmt.addEventListener("focus", highlightAmt);

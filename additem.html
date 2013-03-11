@@ -17,71 +17,75 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 		<meta name="MobileOptimized" content="320"/>
 	</head>
 	<body>
-		<hgroup>
-  			<h1><img src="img/brand.jpg" border=3 /></h1>
-			<h2>Add Bill</h2>
-		</hgroup>
-		<form action="#" method="post" id="addBill">
-			<fieldset>
-				<legend> Bill Information </legend>
-				<ul>
-					<li><label for="btype">Bill Type: </label>
-						<select id="btype">
-							<option value="Utility">Utility</option>
-							<option value="Personal">Personal</option>
-							<option value="Business">Business</option>
-							<option value="Education">Education</option>
-							<option value="aloan">Auto Loan</option>
-							<option value="hloan">Mortgage</option>								
-							<option value="rent">Rent</option>
-							<option value="other">Other</option>
-						</select>	
-					</li>
-					<li><label for="bname">Bill Name: </label><input type="text" id="bname" placeholder="Elec, Car, Netflix, etc" /></li>
-					<li><label for="prio">Priority: </label> Low <input type="range" id="prio" min="1" max="5" value="1" /> High </li>
-					<li><label for="amt">Amount: </label><input type="text" id="amt" placeholder="$150.00" /></li>
-					<li><label for="due">Due Date: </label><input type="date" id="due" /></li>
-					<input type="hidden" name="billNumber" id="billNumber" value="00001" />
-					<input type="hidden" name="timeSaved" id="timeSaved" value="currentTime" />
-				</ul>
-			</fieldset>
-			<fieldset>
-				<legend> Update Bills </legend>
-				<ul>			
-					<li><input type="radio" value="UnPaid" id="unpd" name="status"/><label for="pd">Unpaid </label></li>
-					<li><input type="radio" value="Paid" id="pd" name="status"/><label for="pd">Paid With: </label>
-						<select id="pdwith">
-							<optgroup label="Cash Payment Types">									
-								<option value="Debit Card">Debit Card</option>
-								<option value="Cash">Cash</option>
-								<option value="Check">Check</option>
-							</optgroup>
-							<optgroup label="Credit Cards">
-								<option value="MasterCard">MasterCard</option>
-								<option value="Visa">Visa</option>
-								<option value="Discover">Discover</option>
-								<option value="American Express">American Express</option>
-								<option value="Other Card">Other Card</option>
-							</optgroup>									
-						</select>									
-					</li>
-					<li><input type="checkbox" value="On Time" id="ontime" name="paymentTime" /><label for="ontime">On Time</label></li>
-					<li><input type="checkbox" value="Late" id="late" name="paymentTime" /><label for="late">Late</label></li>
-					<li><input type="checkbox" value="Late Fee" id="lfee" name="paymentTime" /><label for="lfee">Late Fee Imposed</label></li>
-					<li><label for="comments">Comments:</label><textarea id="textArea" placeholder="Leave comments or notes here...."></textarea></li>	
-				</ul>	
-			</fieldset>
-			<input type="button" value="Save Me" id="saveMe"/>
-			<input type="button" value="Reset Me" id="resetMe"/>	<br> <br>
-			<a href = "index.html"><input type="button" value="Back" id="back"/></a><br><br>
+		<article id="Main">
+			<hgroup>
+  				<h1><img src="img/brand.jpg" border=3 /></h1>
+				<h2>Add Bill</h2>
+			</hgroup>
+			<form action="#" method="post" id="addBill">
+				<fieldset>
+					<legend> Bill Information </legend>
+					<ul>
+						<li><label for="btype">Bill Type: </label>
+							<select id="btype">
+								<option value="Utility">Utility</option>
+								<option value="Personal">Personal</option>
+								<option value="Business">Business</option>
+								<option value="Education">Education</option>
+								<option value="aloan">Auto Loan</option>
+								<option value="hloan">Mortgage</option>								
+								<option value="rent">Rent</option>
+								<option value="other">Other</option>
+							</select>	
+						</li>
+						<li><label for="bname">Bill Name: </label><input type="text" id="bname" placeholder="Elec, Car, Netflix, etc" /></li>
+						<li><label for="prio">Priority: </label> Low <input type="range" id="prio" min="1" max="5" value="1" /> High </li>
+						<li><label for="amt">Amount: </label><input type="text" id="amt" placeholder="$150.00" /></li>
+						<li><label for="due">Due Date: </label><input type="date" id="due" /></li>
+						<input type="hidden" name="billNumber" id="billNumber" value="00001" />
+						<input type="hidden" name="timeSaved" id="timeSaved" value="currentTime" />
+					</ul>
+				</fieldset>
+				<fieldset>
+					<legend> Update Bills </legend>
+					<ul>			
+						<li><input type="radio" checked value="UnPaid" id="unpd" name="status"/><label for="pd">Unpaid </label></li>
+						<li><input type="radio" value="Paid" id="pd" name="status"/><label for="pd">Paid With: </label>
+							<select id="pdwith">
+								<optgroup label="Cash Payment Types">									
+									<option value="Debit Card">Debit Card</option>
+									<option value="Cash">Cash</option>
+									<option value="Check">Check</option>
+								</optgroup>
+								<optgroup label="Credit Cards">
+									<option value="MasterCard">MasterCard</option>
+									<option value="Visa">Visa</option>
+									<option value="Discover">Discover</option>
+									<option value="American Express">American Express</option>
+									<option value="Other Card">Other Card</option>
+								</optgroup>									
+							</select>									
+						</li>
+						<li><input type="checkbox" value="On Time" id="ontime" name="paymentTime" /><label for="ontime">On Time</label></li>
+						<li><input type="checkbox" value="Late" id="late" name="paymentTime" /><label for="late">Late</label></li>
+						<li><input type="checkbox" value="Late Fee" id="lfee" name="paymentTime" /><label for="lfee">Late Fee Imposed</label></li>
+						<li><label for="comments" >Comments:</label><textarea id="textArea" name="textArea" placeholder="Leave comments or notes here...."></textarea></li>	
+					</ul>	
+				</fieldset>
+				<input type="button" value="Save Me" id="saveMe"/>
+				<input type="button" value="Reset Me" id="resetMe"/>	<br> <br>
+				<a href = "index.html"><input type="button" value="Back" id="back"/></a><br><br>
+			</form>	
 			<input type="button" value="Clear Storage" id="clearAllData"/>
-		</form>	
-		<footer>
+			<a href = "#" id="displayLink"><input type="button" value="Display Bills" /></a>
+			<a href = "additem.html" id="addNewBill"><input type="button" value="Add Another Bill" /></a>
+			<script type="text/javascript" src="js/main.js"></script>
+		</article>
+		<footer id="footer">
 			<br>
 			<p> Follow my <a href = "https://github.com/grindnmosh">github</a> for updates </p>
 			<p> Like my work? Follow me on <a href = "https://twitter.com/grindnmosh">Twitter</a> </p>
     		<p> Designer:  Robert Warren </p>
 		</footer>
-		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>
