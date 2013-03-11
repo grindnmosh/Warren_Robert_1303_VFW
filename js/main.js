@@ -33,8 +33,8 @@ window.addEventListener("DOMContentLoaded", function() {
 	var btData = document.getElementById("btype"); 
 	var localClear = document.getElementById("clearAllData");
 	
-	function displaySavedInfo(x) {
-	var theBill = document.getElementById(x);
+	function displaySavedInfo(field) {
+	var theBill = document.getElementById(field);
 	return theBill
 	};
 	
@@ -187,7 +187,17 @@ window.addEventListener("DOMContentLoaded", function() {
 		};
 		return clearAll
 	};
-
+	
+	function cleanHouse() {
+		if(localStorage.length === 0) {
+			alert("There is no data to clear!!");
+		} else {
+		localStorage.clear();
+		alert("All bills are deleted");
+		window.location.reload();
+		};
+		return false;
+	};//updated with conditional per instruction
 
 // storing it in alpha order and calling it in the order saved not by the value name. 
 //Used array numbers. even using loops did it out of order
@@ -240,19 +250,6 @@ window.addEventListener("DOMContentLoaded", function() {
 		return magicFill
 	};*/
 	
-	function cleanHouse() {
-		if(localStorage.length === 0) {
-			alert("There is no data to clear!!");
-		} else {
-		localStorage.clear();
-		alert("All bills are deleted")
-		window.location.reload();
-		};
-		return false;
-	};//updated with conditional per instruction
-	
-	
-	
 	/*btData.addEventListener("blur", savedData);
 	bnData.addEventListener("blur", savedData);
 	costData.addEventListener("blur", savedData);
@@ -260,6 +257,8 @@ window.addEventListener("DOMContentLoaded", function() {
 	whenData.addEventListener("blur", savedData);
 	anyNotes.addEventListener("blur", savedData);
 	magicFill();*/
+
+
 	
 	var displayLink = displaySavedInfo("displayLink");
 	displayLink.addEventListener("click", getBill);
@@ -273,7 +272,6 @@ window.addEventListener("DOMContentLoaded", function() {
 	takeNote.addEventListener("blur", normBordNotable);
 	saveBill.addEventListener("click", getForm);
 	clearBill.addEventListener("click", clearAll);
-
 	localClear.addEventListener("click", cleanHouse);
 
 });
