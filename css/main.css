@@ -44,6 +44,12 @@ li {
 	font-family: times;
 	line-height: 2em;
 }
+#billimg {
+	width: 200px;
+	text-align: center;
+	margin: 20px;
+	border: 2px solid blue;
+};
 #bname {
 	background: lightgrey;
 }

@@ -175,6 +175,10 @@ window.addEventListener("DOMContentLoaded", function() {
 		newForm.setAttribute("id", "bill");
 		var newList = document.createElement("ul");
 		newForm.appendChild(newList);
+		var img = document.createElement("img");
+			img.src = "img/bill.jpg";
+			img.setAttribute("id", "billimg");
+			newForm.appendChild(img);	
 		document.body.appendChild(newForm);
 		displaySavedInfo("bill").style.display = "block";
 		for(i=0, l=localStorage.length; i<l; i++) {
