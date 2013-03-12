@@ -28,6 +28,9 @@ form {
 	border: 2px solid black;
 	background: white;
 }
+.pageMatch{
+	color: blue
+};
 legend {
 	margin: 20px;
 	border: 2px solid black;
