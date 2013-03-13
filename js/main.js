@@ -18,21 +18,13 @@ window.addEventListener("DOMContentLoaded", function() {
 	var checkBox = document.forms[0].paymentTime;
 	var payer = document.forms[0].status;
 	var cardCash = document.getElementById("pdwith");
-	var anyNotes = document.getElementById("textArea");
 	var saveSuccess = "Your Bill Is Saved!"
-	var myField = document.getElementById("bname");
-	var myAmt = document.getElementById("amt");
-	var payIt = document.getElementById("due");
-	var takeNote = document.getElementById("textArea");
 	var saveBill = document.getElementById("saveMe");
 	var clearBill = document.getElementById("resetMe");
 	var backBill = document.getElementById("back");
-	var thankYou = document.createElement("p");
-	var myForm = document.getElementById("addBill");
-	var thanksAlot = "Thank you for submitting your new bill!";
-	var btData = document.getElementById("btype"); 
 	var localClear = document.getElementById("clearAllData");
 	var frequency = ["--select frequency of bill--", "one time", "weekly", "biweekly", "monthly", "quarterly", "annually"];
+	var displayLink = displaySavedInfo("displayLink");
 	
 	function displaySavedInfo(field) {
 	var theBill = document.getElementById(field);
@@ -40,44 +32,44 @@ window.addEventListener("DOMContentLoaded", function() {
 	};
 	
 	function highlightBill() {
-		myField.setAttribute("class", "hasFocus");
+		bnData.setAttribute("class", "hasFocus");
 		return highlightBill;
 	};
 
 	function highlightAmt() {
-		myAmt.setAttribute("class", "hasFocus");
+		costData.setAttribute("class", "hasFocus");
 		return highlightAmt;
 	};
 
 	function highlightPayable() {
-		payIt.setAttribute("class", "hasFocus");
+		whenData.setAttribute("class", "hasFocus");
 		return highlightPayable;
 	};
 
 	function highlightNotable() {
-		takeNote.setAttribute("class", "hasFocus");
+		comData.setAttribute("class", "hasFocus");
 		return highlightNotable;
 	};		
 
 	function normBordBill() {
-		myField.removeAttribute("class", "hasFocus");
+		bnData.removeAttribute("class", "hasFocus");
 		return normBordBill;
 	};
 
 	function normBordAmt() {
-		myAmt.removeAttribute("class", "hasFocus");
+		costData.removeAttribute("class", "hasFocus");
 		return normBordAmt;
 	};
 
 	function normBordPayable() {
-		payIt.removeAttribute("class", "hasFocus");
+		whenData.removeAttribute("class", "hasFocus");
 		return normBordPayable;
 	};
 
 	function normBordNotable() {
-		takeNote.removeAttribute("class", "hasFocus");
+		comData.removeAttribute("class", "hasFocus");
 		return normBordNotable;
-	};
+	}; 
 	
 	function addBillType() {
 		var grabForm = document.getElementsByTagName("form"[0]);
@@ -229,7 +221,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		localStorage.setItem("Amount", costData.value);
 		localStorage.setItem("Priority", importance.value);
 		localStorage.setItem("Due Date", whenData.value);
-		localStorage.setItem("Comments", anyNotes.value);
+		localStorage.setItem("Comments", comData.value);
 		for(i=0, c=payer.length; i<c; i++) {
      		if(payer[i].checked) {
         		localStorage.setItem("Payment Status: ", payer[i].value)
@@ -264,7 +256,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		whenData.value = dueDataValue;
 		var comDataKey = localStorage.key(1);
 		var comDataValue = localStorage.getItem(comDataKey);
-		anyNotes.value = comDataValue;
+		comData.value = comDataValue;
 		payer.value = getSelectedRadio();
 		cardCash.value = howPaid();
 		checkBox.value = getCheckBoxValue();
@@ -276,25 +268,21 @@ window.addEventListener("DOMContentLoaded", function() {
 	costData.addEventListener("blur", savedData);
 	importance.addEventListener("change", savedData);
 	whenData.addEventListener("blur", savedData);
-	anyNotes.addEventListener("blur", savedData);
+	comData.addEventListener("blur", savedData);
 	magicFill();*/
 
 
 	addBillType();
-	var displayLink = displaySavedInfo("displayLink");
 	displayLink.addEventListener("click", getBill);
-	myField.addEventListener("focus", highlightBill);
-	myField.addEventListener("blur", normBordBill);
-	myAmt.addEventListener("focus", highlightAmt);
-	myAmt.addEventListener("blur", normBordAmt);
-	payIt.addEventListener("focus", highlightPayable);
-	payIt.addEventListener("blur", normBordPayable);
-	takeNote.addEventListener("focus", highlightNotable);
-	takeNote.addEventListener("blur", normBordNotable);
+	bnData.addEventListener("focus", highlightBill);
+	bnData.addEventListener("blur", normBordBill);
+	costData.addEventListener("focus", highlightAmt);
+	costData.addEventListener("blur", normBordAmt);
+	whenData.addEventListener("focus", highlightPayable);
+	whenData.addEventListener("blur", normBordPayable);
 	saveBill.addEventListener("click", getForm);
 	clearBill.addEventListener("click", clearAll);
 	localClear.addEventListener("click", cleanHouse);
-	
 });
 
 

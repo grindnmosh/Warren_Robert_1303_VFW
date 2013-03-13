@@ -30,7 +30,7 @@ form {
 }
 .pageMatch{
 	color: blue
-};
+}
 legend {
 	margin: 20px;
 	border: 2px solid black;
@@ -52,22 +52,22 @@ li {
 	text-align: center;
 	margin: 20px;
 	border: 2px solid blue;
-};
+}
 #bname {
-	background: lightgrey;
+	background:lightgrey;
 }
 #amt {
-	background: lightgrey;
+	background:lightgrey;
 }
 #due {
-	background: lightgrey;
+	background:lightgrey;
 }
 #comments {
 	background: lightgrey;
 }
 #addNewBill {
 	display: none
-};
+}
 p.padding {
 	padding:100px 65px 100px 65px;
 }
@@ -99,4 +99,4 @@ a.likeAButton:active {
 #back {
 	background: grey;
 }
-input.hasFocus {border: 2px solid darkblue};
+input.hasFocus {border: 2px solid darkblue}
