@@ -61,6 +61,16 @@ form fieldset ul textarea {
 	border: 1px solid black;
 	background: lightgrey;
 }
+form fieldset ul select {
+	border: 1px solid black;
+	background: lightgrey;
+}
+#freq {
+	display: inline;
+} 
+#freqs {
+	display: inline;
+} 
 #addNewBill {
 	display: none
 }

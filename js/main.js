@@ -72,19 +72,19 @@ window.addEventListener("DOMContentLoaded", function() {
 	}; 
 	
 	function addBillType() {
-		var grabForm = document.getElementsByTagName("form"[0]);
-		var grabSelect = displaySavedInfo("top");
-		var newSelect = document.createElement("select");
-			newSelect.setAttribute("id", "freqs");
-		for(var i=0, f=frequency.length; i<f; i++) {
-			var newOption = document.createElement("option");
-			var insertText = frequency[i];
-			newOption.setAttribute("value", insertText);
-			newOption.innerHTML = insertText;
-			newSelect.appendChild(newOption);
-		};
-		grabSelect.appendChild(newSelect);
-	};
+    	var grabForm = document.getElementsByTagName("form"[0]);
+   		var grabSelect = displaySavedInfo("top");
+   	 	var newSelect = document.createElement("select");
+      		newSelect.setAttribute("id", "freqs");
+    	for(var i=0, f=frequency.length; i<f; i++) {
+      		var newOption = document.createElement("option");
+      		var insertText = frequency[i];
+      		newOption.setAttribute("value", insertText);
+      		newOption.innerHTML = insertText;
+      		newSelect.appendChild(newOption);
+    	};
+    	grabSelect.appendChild(newSelect);
+  	};
 	
 	function getSelectedRadio() {
 		var radioSelected = document.forms[0].status;
