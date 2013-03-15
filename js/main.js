@@ -95,15 +95,28 @@ window.addEventListener("DOMContentLoaded", function() {
 		};
 	};
 	
-	function getCheckBoxValue() {
-		var checkBoxesSelected = document.forms[0].paymentTime;
-		for(i=0; i<checkBoxesSelected.length; i++) {
-			if(checkBoxesSelected[i].checked) {
-				ptValue = checkBoxesSelected[i].value
-			} else {
-				ptValue = " "
-			};
-		};
+	function getCheckBoxOnTime() {
+		 if(displaySavedInfo('ontime').checked){
+			 onTime = displaySavedInfo('ontime').value;
+		 }else{
+			 onTime = "N/A";
+		 }
+	};
+	
+	function getCheckBoxLate() {
+		 if(displaySavedInfo('late').checked){
+			 late = displaySavedInfo('late').value;
+		 }else{
+			 late = "N/A";
+		 }
+	};
+	
+	function getCheckBoxLateFee() {
+		 if(displaySavedInfo('lfee').checked){
+			 lateFee = displaySavedInfo('lfee').value;
+		 }else{
+			 lateFee = "N/A";
+		 }
 	};
 	
 	function howPaid() {
@@ -140,7 +153,9 @@ window.addEventListener("DOMContentLoaded", function() {
 		var id = "z"+(Math.floor(Math.random()*1000000001))
 		getSelectedRadio();
 		howPaid();
-		getCheckBoxValue();
+		getCheckBoxOnTime();
+		getCheckBoxLate();
+		getCheckBoxLateFee();
 		var item = {};
    			item.btData = ["Type: ", displaySavedInfo("btype").value];
     		item.bnData = ["Name: ", displaySavedInfo("bname").value];
@@ -150,7 +165,9 @@ window.addEventListener("DOMContentLoaded", function() {
    		 	item.freqs = ["frequency: ", displaySavedInfo("freqs").value];
     		item.paid = ["Paid: ", paidValue];
    		 	item.paymentCard = ["Paid with: ", paymentValue];
-   		 	item.when = ["On time? Late fee?: ", ptValue];
+   		 	item.onTime = ["On time?: ", onTime];
+   		 	item.late = ["Late?: ", late];
+   		 	item.lateFee = ["Late Fee?: ", lateFee];
    		 	item.comData = ["Comments: ", displaySavedInfo("textArea").value];
     	localStorage.setItem(id, JSON.stringify(item));
     	alert(saveSuccess);
