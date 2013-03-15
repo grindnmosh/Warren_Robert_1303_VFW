@@ -53,16 +53,12 @@ li {
 	margin: 20px;
 	border: 2px solid blue;
 }
-#bname {
-	background:lightgrey;
+form fieldset ul input {
+	border: 1px solid black;
+	background: lightgrey;
 }
-#amt {
-	background:lightgrey;
-}
-#due {
-	background:lightgrey;
-}
-#comments {
+form fieldset ul textarea {
+	border: 1px solid black;
 	background: lightgrey;
 }
 #addNewBill {
@@ -100,3 +96,4 @@ a.likeAButton:active {
 	background: grey;
 }
 input.hasFocus {border: 2px solid darkblue}
+textarea.hasFocus {border: 2px solid darkblue}

@@ -297,6 +297,8 @@ window.addEventListener("DOMContentLoaded", function() {
 	costData.addEventListener("blur", normBordAmt);
 	whenData.addEventListener("focus", highlightPayable);
 	whenData.addEventListener("blur", normBordPayable);
+	comData.addEventListener("focus", highlightNotable);
+	comData.addEventListener("blur", normBordNotable);
 	saveBill.addEventListener("click", getForm);
 	clearBill.addEventListener("click", clearAll);
 	localClear.addEventListener("click", cleanHouse);
