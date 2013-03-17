@@ -141,7 +141,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				displaySavedInfo("addBill").style.display = "block";
 				displaySavedInfo("clearAllData").style.display = "block";
 				displaySavedInfo("displayLink").style.display = "block";
-				displaySavedInfo("addAnotherBill").style.display = "none";
+				displaySavedInfo("addNewBill").style.display = "none";
 				displaySavedInfo("bill").style.display = "none";
 				break;
 			default:
@@ -180,32 +180,91 @@ window.addEventListener("DOMContentLoaded", function() {
 		if(localStorage.length === 0) {
 			alert("There is no data to view.");
 		};
-		var newForm = document.createElement("form");
-		newForm.setAttribute("id", "bill");
+		var newDiv = document.createElement("div");
+		newDiv.setAttribute("id", "bill");
 		var newList = document.createElement("ul");
-		newForm.appendChild(newList);
-		var img = document.createElement("img");
-			img.src = "img/bill.jpg";
-			img.setAttribute("id", "billimg");
-			newForm.appendChild(img);	
-		document.body.appendChild(newForm);
+		newDiv.appendChild(newList);	
+		document.body.appendChild(newDiv);
 		displaySavedInfo("bill").style.display = "block";
 		for(i=0, l=localStorage.length; i<l; i++) {
 			var newItem = document.createElement("li");
+			var buttons = document.createElement("li");
 			newList.appendChild(newItem);
 			var category = localStorage.key(i);
 			var input = localStorage.getItem(category);
 			var totalData = JSON.parse(input);
 			var newSub = document.createElement("ul");
 			newItem.appendChild(newSub);
+			var img = document.createElement("img");
+			img.src = "img/bill.jpg";
+			img.setAttribute("id", "billimg");
+			newItem.appendChild(img);
 			for(var d in totalData) {
 				var newSubList = document.createElement("li");
 				newSub.appendChild(newSubList);
 				var insertText = totalData[d][0] + " " + totalData[d][1];
 				newSubList.innerHTML = insertText;
+				newSub.appendChild(buttons);
 			};
+			createButtons(localStorage.key(i), buttons);
 		};
 	};
+	
+	function createButtons(key, buttons) {
+		var editButton = document.createElement("a");
+		editButton.href = "#";
+		editButton.key = key;
+		var editText = "Edit Bill";
+		editButton.addEventListener("click", makeEdits);
+		editButton.innerHTML = editText;
+		buttons.appendChild(editButton);
+		var pageBreak = document.createElement("br");
+		buttons.appendChild(pageBreak);
+		var delButton = document.createElement("a");
+		delButton.href = "#";
+		delButton.key = key;
+		var delText = "Delete Bill";
+		//delButton.addEventListener("click", runDelete);
+		delButton.innerHTML = delText;
+		buttons.appendChild(delButton);
+	};
+	
+	function makeEdits() {
+		var value = localStorage.getItem(this.key);
+		var recallData = JSON.parse(value);
+		switchPages("off");
+		displaySavedInfo("btype").value = recallData.btData[1];
+		displaySavedInfo("bname").value = recallData.bnData[1];
+		displaySavedInfo("amt").value = recallData.costData[1];
+		displaySavedInfo("prio").value = recallData.importance[1];
+		displaySavedInfo("due").value = recallData.whenData[1];
+		displaySavedInfo("freqs").value = recallData.freqs[1];
+		var radioSelected = document.forms[0].status;
+		for(i=0; i<radioSelected.length; i++) {
+			if(radioSelected[i].checked == "Paid" && recallData == "Paid") {
+				radioSelected[i].setAttribute("checked", "checked");
+			} else if(radioSelected[i].value == "UnPaid" && recallData == "UnPaid");
+				radioSelected[i].setAttribute("checked", "checked");
+		};
+		var paidWith = document.getElementById("pdwith");
+		if(recallData.paid = "Paid") {
+    		paymentValue = paidWith.value;
+    	};
+    	if(recallData.onTime[1] == "On Time") {
+	    	displaySavedInfo("onTime").setAttribute("checked", "checked");
+    	};
+    	if(recallData.late[1] == "Late") {
+	    	displaySavedInfo("late").setAttribute("checked", "checked");
+    	};
+    	if(recallData.lateFee[1] == "Late Fee") {
+	    	displaySavedInfo("lfee").setAttribute("checked", "checked");
+    	};
+		displaySavedInfo("textArea").value = recallData.comData[1];
+	};
+	
+	//function runDelete() {
+		
+	//};
 	
 	function clearAll() {
 		var areYouSure = confirm("Are you sure you want to clear the form and start over?");

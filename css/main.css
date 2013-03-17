@@ -73,6 +73,11 @@ form fieldset ul select {
 #freqs {
 	display: inline;
 } 
+div {
+	border: 1px solid black;	
+	background: white;
+	padding: 10px 10px 10px 10px;	
+}
 #addNewBill {
 	display: none
 }
