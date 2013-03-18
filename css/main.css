@@ -122,8 +122,12 @@ a.likeAButton:active {
 #delBill {
 	background: red;
 }
-input.hasFocus {border: 2px solid darkblue}
-textarea.hasFocus {border: 2px solid darkblue}
+input.hasFocus {
+	border: 2px solid darkblue;
+}
+textarea.hasFocus {
+	border: 2px solid darkblue;
+}
 .star {
 	color: red;
 	display: inline;

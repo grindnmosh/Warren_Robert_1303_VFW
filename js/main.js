@@ -26,51 +26,20 @@ window.addEventListener("DOMContentLoaded", function() {
 	var frequency = ["--select frequency of bill--", "one time", "weekly", "biweekly", "monthly", "quarterly", "annually"];
 	var displayLink = displaySavedInfo("displayLink");
 	var toErr = displaySavedInfo("errors");
+	var hFields = [bnData, costData, whenData, comData]
 	
 	function displaySavedInfo(field) {
 		var theBill = document.getElementById(field);
 		return theBill
 	};
 	
-	function highlightBill() {
-		bnData.setAttribute("class", "hasFocus");
-		return highlightBill;
+	function highlightBord() {
+		this.setAttribute("class", "hasFocus")
 	};
-
-	function highlightAmt() {
-		costData.setAttribute("class", "hasFocus");
-		return highlightAmt;
+	
+	function normBord() {
+		this.removeAttribute("class", "hasFocus")
 	};
-
-	function highlightPayable() {
-		whenData.setAttribute("class", "hasFocus");
-		return highlightPayable;
-	};
-
-	function highlightNotable() {
-		comData.setAttribute("class", "hasFocus");
-		return highlightNotable;
-	};		
-
-	function normBordBill() {
-		bnData.removeAttribute("class", "hasFocus");
-		return normBordBill;
-	};
-
-	function normBordAmt() {
-		costData.removeAttribute("class", "hasFocus");
-		return normBordAmt;
-	};
-
-	function normBordPayable() {
-		whenData.removeAttribute("class", "hasFocus");
-		return normBordPayable;
-	};
-
-	function normBordNotable() {
-		comData.removeAttribute("class", "hasFocus");
-		return normBordNotable;
-	}; 
 	
 	function addBillType() {
     	var grabForm = document.getElementsByTagName("form"[0]);
@@ -164,7 +133,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		var item = {};
    			item.btData = ["Type: ", displaySavedInfo("btype").value];
     		item.bnData = ["Name: ", displaySavedInfo("bname").value];
-    		item.costData = ["Amount: ", displaySavedInfo("amt").value];
+    		item.costData = ["Amount: $", displaySavedInfo("amt").value];
     		item.importance = ["Priority: ", displaySavedInfo("prio").value];
    		 	item.whenData = ["Due: ", displaySavedInfo("due").value];
    		 	item.freqs = ["frequency: ", displaySavedInfo("freqs").value];
@@ -250,10 +219,9 @@ window.addEventListener("DOMContentLoaded", function() {
 		displaySavedInfo("freqs").value = recallData.freqs[1];
 		var radioSelected = document.forms[0].status;
 		for(i=0; i<radioSelected.length; i++) {
-			if(radioSelected[i].checked == "Paid" && recallData == "Paid") {
+			if(radioSelected[i].checked === recallData) {
 				radioSelected[i].setAttribute("checked", "checked");
-			} else if(radioSelected[i].value == "UnPaid" && recallData == "UnPaid");
-				radioSelected[i].setAttribute("checked", "checked");
+			};
 		};
 		var paidWith = document.getElementById("pdwith");
 		if(recallData.paid = "Paid") {
@@ -301,9 +269,9 @@ window.addEventListener("DOMContentLoaded", function() {
 			errors.push(bnError);
 		};
 		
-		var money = /\$\d{1,5}\.\d{2}/;
+		var money = /\d{1,5}\.\d{2}/;
 		if(!(money.exec(getAmt.value))) {
-			var amtError = "Please enter amount due in $150.00 format.";
+			var amtError = "Please enter amount due in 150.00 format.";
 			getAmt.style.border = "1px solid red";
 			errors.push(amtError); // validate regex dollar input
 			};
@@ -428,14 +396,10 @@ window.addEventListener("DOMContentLoaded", function() {
 
 	addBillType();
 	displayLink.addEventListener("click", getBill);
-	bnData.addEventListener("focus", highlightBill);
-	bnData.addEventListener("blur", normBordBill);
-	costData.addEventListener("focus", highlightAmt);
-	costData.addEventListener("blur", normBordAmt);
-	whenData.addEventListener("focus", highlightPayable);
-	whenData.addEventListener("blur", normBordPayable);
-	comData.addEventListener("focus", highlightNotable);
-	comData.addEventListener("blur", normBordNotable);
+	for(i=0, f=hFields.length; i<f; i++) {
+		hFields[i].addEventListener("focus", highlightBord)
+		hFields[i].addEventListener("blur", normBord)
+	};
 	saveBill.addEventListener("click", validate);
 	clearBill.addEventListener("click", clearAll);
 	localClear.addEventListener("click", cleanHouse);
