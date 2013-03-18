@@ -122,6 +122,14 @@ textarea.hasFocus {border: 2px solid darkblue}
 	color: red;
 	display: inline;
 }
+[type = "radio"] {
+	border: none;
+	width: inherit;
+}
+[type = "checkbox"] {
+	border: none;
+	width: inherit;
+}
 
 a:link {
 	color: green;
