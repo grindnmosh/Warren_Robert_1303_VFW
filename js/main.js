@@ -15,6 +15,9 @@ window.addEventListener("DOMContentLoaded", function() {
 	var importance = document.getElementById("prio");
 	var whenData = document.getElementById("due");
 	var comData = document.getElementById("textArea");
+	var time = document.getElementById("ontime");
+	var late = document.getElementById("late");
+	var fee = document.getElementById("lfee");
 	var checkBox = document.forms[0].paymentTime;
 	var payer = document.forms[0].status;
 	var cardCash = document.getElementById("pdwith");
@@ -26,7 +29,8 @@ window.addEventListener("DOMContentLoaded", function() {
 	var frequency = ["--select frequency of bill--", "one time", "weekly", "biweekly", "monthly", "quarterly", "annually"];
 	var displayLink = displaySavedInfo("displayLink");
 	var toErr = displaySavedInfo("errors");
-	var hFields = [bnData, costData, whenData, comData]
+	var hFields = [bnData, costData, whenData, comData];
+	var checkBoxes = [time, late, fee];
 	
 	function displaySavedInfo(field) {
 		var theBill = document.getElementById(field);
@@ -65,6 +69,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		};
 	};
 	
+		
 	function getCheckBoxOnTime() {
 		 if(displaySavedInfo('ontime').checked){
 			 onTime = displaySavedInfo('ontime').value;
@@ -139,7 +144,7 @@ window.addEventListener("DOMContentLoaded", function() {
    		 	item.freqs = ["frequency: ", displaySavedInfo("freqs").value];
     		item.paid = ["Paid: ", paidValue];
    		 	item.paymentCard = ["Paid with: ", paymentValue];
-   		 	item.onTime = ["On time?: ", onTime];
+   		 	item.onTime = ["On time?: ", onTime];   		 	
    		 	item.late = ["Late?: ", late];
    		 	item.lateFee = ["Late Fee?: ", lateFee];
    		 	item.comData = ["Comments: ", displaySavedInfo("textArea").value];
@@ -227,6 +232,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		if(recallData.paid = "Paid") {
     		paymentValue = paidWith.value;
     	};
+    	
     	if(recallData.onTime[1] == "On Time") {
 	    	displaySavedInfo("ontime").setAttribute("checked", "checked");
     	};
