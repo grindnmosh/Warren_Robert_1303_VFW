@@ -25,6 +25,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	var localClear = document.getElementById("clearAllData");
 	var frequency = ["--select frequency of bill--", "one time", "weekly", "biweekly", "monthly", "quarterly", "annually"];
 	var displayLink = displaySavedInfo("displayLink");
+	var toErr = displaySavedInfo("errors");
 	
 	function displaySavedInfo(field) {
 		var theBill = document.getElementById(field);
@@ -149,8 +150,12 @@ window.addEventListener("DOMContentLoaded", function() {
 		};
 	};
 	
-	function getForm() {
-		var id = "z"+(Math.floor(Math.random()*1000000001))
+	function getForm(key) {
+		if(!key) {
+			var id = (Math.floor(Math.random()*1000000001));
+		} else {
+			id = key;
+		};
 		getSelectedRadio();
 		howPaid();
 		getCheckBoxOnTime();
@@ -224,7 +229,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		delButton.href = "#";
 		delButton.key = key;
 		var delText = "Delete Bill";
-		//delButton.addEventListener("click", runDelete);
+		delButton.addEventListener("click", runDelete);
 		delButton.innerHTML = delText;
 		buttons.appendChild(delButton);
 	};
@@ -251,7 +256,7 @@ window.addEventListener("DOMContentLoaded", function() {
     		paymentValue = paidWith.value;
     	};
     	if(recallData.onTime[1] == "On Time") {
-	    	displaySavedInfo("onTime").setAttribute("checked", "checked");
+	    	displaySavedInfo("ontime").setAttribute("checked", "checked");
     	};
     	if(recallData.late[1] == "Late") {
 	    	displaySavedInfo("late").setAttribute("checked", "checked");
@@ -260,11 +265,80 @@ window.addEventListener("DOMContentLoaded", function() {
 	    	displaySavedInfo("lfee").setAttribute("checked", "checked");
     	};
 		displaySavedInfo("textArea").value = recallData.comData[1];
+		saveBill.removeEventListener("click", validate);
+		displaySavedInfo("saveMe").value = "Edit Bill";
+		var changeSubmit = displaySavedInfo("saveMe");
+		changeSubmit.addEventListener("click", validate);
+		changeSubmit.key = this.key
 	};
 	
-	//function runDelete() {
+	function validate(d) {
+		var getBt = displaySavedInfo("btype");
+		var getBn = displaySavedInfo("bname");
+		var getAmt = displaySavedInfo("amt");
+		var getDue = displaySavedInfo("due");
+		var getFreqs = displaySavedInfo("freqs");
+		toErr.innerHTML = "";
+		toErr.removeAttribute("class", "errors")
+		getBt.style.border = "1px solid black";
+		getBn.style.border = "1px solid black";
+		getAmt.style.border = "1px solid black";
+		getDue.style.border = "1px solid black";
+		getFreqs.style.border = "1px solid black";
+		var errors = [];
+		if(getBt.value === "--Choose Bill Type--") {
+			var btError = "Please choose a bill type.";
+			getBt.style.border = "1px solid red";
+			errors.push(btError);
+		};
+		if(getBn.value === "") {
+			var bnError = "Please name your bill.";
+			getBn.style.border = "1px solid red";
+			errors.push(bnError);
+		};
 		
-	//};
+		var money = /\$\d{1,5}\.\d{2}/;
+		if(!(money.exec(getAmt.value))) {
+			var amtError = "Please enter amount due in $150.00 format.";
+			getAmt.style.border = "1px solid red";
+			errors.push(amtError); // validate regex dollar input
+			};
+		
+		if(getDue.value === "") {
+			var dueError = "Please enter due date.";
+			getDue.style.border = "1px solid red";
+			errors.push(dueError); 
+		};
+		if(getFreqs.value === "--select frequency of bill--") {
+			var freqsError = "Please choose the frequency of your bill.";
+			getFreqs.style.border = "1px solid red";
+			errors.push(freqsError);
+		};
+		if(errors.length >= 1) {
+			toErr.setAttribute("class", "errors")
+			for(var i=0, e=errors.length; i < e; i++) {
+				var err = document.createElement("li");
+				err.innerHTML = errors[i];
+				toErr.appendChild(err);
+			};
+			d.preventDefault();
+			return false
+		} else {
+			getForm(this.key);
+		}
+		
+	};
+	
+	function runDelete() {
+		var verify = confirm("Are you sure you want to delete this bill. This can not be undone.");
+		if(verify) {
+			localStorage.removeItem(this.key);
+			window.location.reload();
+			alert("Bill was deleted");
+		} else {
+			alert("No changes have been made.");
+		};
+	};
 	
 	function clearAll() {
 		var areYouSure = confirm("Are you sure you want to clear the form and start over?");
@@ -358,7 +432,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	whenData.addEventListener("blur", normBordPayable);
 	comData.addEventListener("focus", highlightNotable);
 	comData.addEventListener("blur", normBordNotable);
-	saveBill.addEventListener("click", getForm);
+	saveBill.addEventListener("click", validate);
 	clearBill.addEventListener("click", clearAll);
 	localClear.addEventListener("click", cleanHouse);
 });

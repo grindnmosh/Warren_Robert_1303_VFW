@@ -100,6 +100,10 @@ a.likeAButton:active {
 	margin:1px;
 	text-decoration:none;
 }
+.errors {
+	color: red;
+	border: 1px solid red;
+}
 #saveMe {
 	margin-left: 100px;
 	display: inline;
@@ -114,3 +118,20 @@ a.likeAButton:active {
 }
 input.hasFocus {border: 2px solid darkblue}
 textarea.hasFocus {border: 2px solid darkblue}
+.star {
+	color: red;
+	display: inline;
+}
+
+a:link {
+	color: green;
+}
+a:visited {
+	color: aqua;
+}
+a:hover {
+	color: gray;
+}
+a:active {
+	color: black;
+}

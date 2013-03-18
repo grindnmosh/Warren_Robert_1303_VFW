@@ -27,9 +27,12 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 			<form action="#" method="post" id="addBill">
 				<fieldset id="top">
 					<legend> Bill Information </legend>
-					<ul>
-						<li><label for="btype">Bill Type: </label>
+					<span>Fields marked with <p class="star">*</p> are required fields.</span>
+					<ul id="errors"></ul>
+					<ul id="newBill">
+						<li><p class="star">*</p><label for="btype">Bill Type: </label>
 							<select id="btype">
+								<option value="--Choose Bill Type--">--Choose Bill Type--</option>
 								<option value="Utility">Utility</option>
 								<option value="Personal">Personal</option>
 								<option value="Business">Business</option>
@@ -40,11 +43,11 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 								<option value="other">Other</option>
 							</select>	
 						</li>
-						<li><label for="bname">Bill Name: </label><input type="text" id="bname" placeholder="Elec, Car, Netflix, etc" /></li>
+						<li><p class="star">*</p><label for="bname">Bill Name: </label><input type="text" id="bname" placeholder="Elec, Car, Netflix, etc" /></li>
 						<li><label for="prio">Priority: </label> Low <input type="range" id="prio" min="1" max="5" value="1" /> High </li>
-						<li><label for="amt">Amount: </label><input type="text" id="amt" placeholder="$150.00" /></li>
-						<li><label for="due">Due Date: </label><input type="date" id="due"  /></li>
-						<li><label for="due" id="freq" class="insert">frequency: </label>
+						<li><p class="star">*</p><label for="amt">Amount: </label><input type="text" id="amt" placeholder="$150.00" /></li>
+						<li><p class="star">*</p><label for="due">Due Date: </label><input type="date" id="due"  /></li>
+						<li><p class="star">*</p><label for="due" id="freq" class="insert">frequency: </label>
 						<input type="hidden" name="billNumber" id="billNumber" value="00001" />
 						<input type="hidden" name="timeSaved" id="timeSaved" value="currentTime" />
 					</ul>
@@ -55,7 +58,8 @@ https://github.com/grindnmosh/Warren_Robert_1303_VFW
 						<li><input type="radio" checked value="UnPaid" id="unpd" name="status"/><label for="pd">Unpaid </label></li>
 						<li><input type="radio" value="Paid" id="pd" name="status"/><label for="pd">Paid With: </label>
 							<select id="pdwith">
-								<optgroup label="Cash Payment Types">									
+								<optgroup label="Cash Payment Types">		
+									<option value="--Choose Payment Type--">--Choose Payment Type--</option>
 									<option value="Debit Card">Debit Card</option>
 									<option value="Cash">Cash</option>
 									<option value="Check">Check</option>
