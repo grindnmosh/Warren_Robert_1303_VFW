@@ -216,16 +216,20 @@ window.addEventListener("DOMContentLoaded", function() {
 	};
 	
 	function createButtons(key, buttons) {
-		var editButton = document.createElement("a");
+		var editButton = document.createElement("input");
+		editButton.setAttribute("type", "button");
+		editButton.setAttribute("value", "Edit Bill");
+		editButton.setAttribute("id", "editBill");
 		editButton.href = "#";
 		editButton.key = key;
-		var editText = "Edit Bill";
 		editButton.addEventListener("click", makeEdits);
-		editButton.innerHTML = editText;
 		buttons.appendChild(editButton);
 		var pageBreak = document.createElement("br");
 		buttons.appendChild(pageBreak);
-		var delButton = document.createElement("a");
+		var delButton = document.createElement("input");
+		delButton.setAttribute("type", "button");
+		delButton.setAttribute("value", "Delete Bill");
+		delButton.setAttribute("id", "delBill");
 		delButton.href = "#";
 		delButton.key = key;
 		var delText = "Delete Bill";

@@ -116,6 +116,12 @@ a.likeAButton:active {
 #back {
 	background: grey;
 }
+#editBill {
+	background: green;
+}
+#delBill {
+	background: red;
+}
 input.hasFocus {border: 2px solid darkblue}
 textarea.hasFocus {border: 2px solid darkblue}
 .star {
