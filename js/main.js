@@ -136,12 +136,12 @@ window.addEventListener("DOMContentLoaded", function() {
 		getCheckBoxLate();
 		getCheckBoxLateFee();
 		var item = {};
-   			item.btData = ["Type: ", displaySavedInfo("btype").value];
-    		item.bnData = ["Name: ", displaySavedInfo("bname").value];
-    		item.costData = ["Amount: $", displaySavedInfo("amt").value];
-    		item.importance = ["Priority: ", displaySavedInfo("prio").value];
-   		 	item.whenData = ["Due: ", displaySavedInfo("due").value];
-   		 	item.freqs = ["frequency: ", displaySavedInfo("freqs").value];
+   			item.btData = ["Bill Type: ", displaySavedInfo("btype").value];
+    		item.bnData = ["Bill Name: ", displaySavedInfo("bname").value];
+    		item.costData = ["Bill Amount: $", displaySavedInfo("amt").value];
+    		item.importance = ["Bill Priority: ", displaySavedInfo("prio").value];
+   		 	item.whenData = ["Bill Due Date: ", displaySavedInfo("due").value];
+   		 	item.freqs = ["Bill Frequency: ", displaySavedInfo("freqs").value];
     		item.paid = ["Paid: ", paidValue];
    		 	item.paymentCard = ["Paid with: ", paymentValue];
    		 	item.onTime = ["On time?: ", onTime];   		 	

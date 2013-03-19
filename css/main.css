@@ -55,6 +55,12 @@ li {
 	margin: 20px;
 	border: 2px solid blue;
 }
+form fieldset ul li {
+	list-style: none;
+}
+div ul li {
+	list-style: none;
+}
 form fieldset ul input {
 	border: 1px solid black;
 	background: lightgrey;
@@ -74,9 +80,11 @@ form fieldset ul select {
 	display: inline;
 } 
 div {
+	list-style: none;
 	border: 1px solid black;	
 	background: white;
-	padding: 10px 10px 10px 10px;	
+	padding: 10px 10px 10px 10px;
+	list-style: none;	
 }
 #addNewBill {
 	display: none
