@@ -31,6 +31,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	var toErr = displaySavedInfo("errors");
 	var hFields = [bnData, costData, whenData, comData];
 	var checkBoxes = [time, late, fee];
+	//var reload = document.location.reload(true)
 	
 	function displaySavedInfo(field) {
 		var theBill = document.getElementById(field);
@@ -67,6 +68,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				paidValue = radioSelected[i].value;
 			};
 		};
+		return paidValue
 	};
 	
 		
@@ -224,15 +226,11 @@ window.addEventListener("DOMContentLoaded", function() {
 		displaySavedInfo("freqs").value = recallData.freqs[1];
 		var radioSelected = document.forms[0].status;
 		for(i=0; i<radioSelected.length; i++) {
-			if(radioSelected[i].checked === recallData) {
+			if(radioSelected[i].value == recallData.paid[1]) {
 				radioSelected[i].setAttribute("checked", "checked");
 			};
 		};
-		var paidWith = document.getElementById("pdwith");
-		if(recallData.paid = "Paid") {
-    		paymentValue = paidWith.value;
-    	};
-    	
+		displaySavedInfo("pdwith").value = recallData.paymentCard[1];    	
     	if(recallData.onTime[1] == "On Time") {
 	    	displaySavedInfo("ontime").setAttribute("checked", "checked");
     	};
@@ -303,8 +301,8 @@ window.addEventListener("DOMContentLoaded", function() {
 			return false
 		} else {
 			getForm(this.key);
-		}
-		
+			onClick = document.location.reload(true)
+		};
 	};
 	
 	function runDelete() {
