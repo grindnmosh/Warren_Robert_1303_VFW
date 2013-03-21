@@ -338,9 +338,6 @@ window.addEventListener("DOMContentLoaded", function() {
 		return false;
 	};//updated with conditional per instruction
 
-// storing it in alpha order and calling it in the order saved not by the value name. 
-//Used array numbers. even using loops did it out of order
-
 	/*function savedData() {
 		localStorage.setItem("bType", btData.value);
 		localStorage.setItem("Name", bnData.value);
