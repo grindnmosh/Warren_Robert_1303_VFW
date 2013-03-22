@@ -140,8 +140,8 @@ window.addEventListener("DOMContentLoaded", function() {
 		var item = {};
    			item.btData = ["Bill Type: ", displaySavedInfo("btype").value];
     		item.bnData = ["Bill Name: ", displaySavedInfo("bname").value];
-    		item.costData = ["Bill Amount: $", displaySavedInfo("amt").value];
     		item.importance = ["Bill Priority: ", displaySavedInfo("prio").value];
+    		item.costData = ["Bill Amount: $", displaySavedInfo("amt").value];
    		 	item.whenData = ["Bill Due Date: ", displaySavedInfo("due").value];
    		 	item.freqs = ["Bill Frequency: ", displaySavedInfo("freqs").value];
     		item.paid = ["Paid: ", paidValue];
@@ -159,7 +159,8 @@ window.addEventListener("DOMContentLoaded", function() {
 	function getBill() {
 		switchPages("on"); 
 		if(localStorage.length === 0) {
-			alert("There is no data to view.");
+			alert("There is no data to view. Sample Data has been added.");
+			getSampleBills();
 		};
 		var newDiv = document.createElement("div");
 		newDiv.setAttribute("id", "bill");
@@ -176,10 +177,7 @@ window.addEventListener("DOMContentLoaded", function() {
 			var totalData = JSON.parse(input);
 			var newSub = document.createElement("ul");
 			newItem.appendChild(newSub);
-			var img = document.createElement("img");
-			img.src = "img/bill.jpg";
-			img.setAttribute("id", "billimg");
-			newItem.appendChild(img);
+			loadImg(totalData.btype[1], newSub);
 			for(var d in totalData) {
 				var newSubList = document.createElement("li");
 				newSub.appendChild(newSubList);
@@ -303,6 +301,22 @@ window.addEventListener("DOMContentLoaded", function() {
 			getForm(this.key);
 			onClick = document.location.reload(true)
 		};
+	};
+	
+	function getSampleBills() {
+		for(var n in sampleBills) {
+			var id = (Math.floor(Math.random()*1000000001));
+			localStorage.setItem(id, JSON.stringify(sampleBills[n]));
+		};
+	};
+	
+	function loadImg(billImg, newSub) {
+		var img = document.createElement("li");
+		newSub.appendChild(img);
+		var insertImg = document.createElement("img");
+		var imgSize = insertImg.setAttribute("class", "billImg");		
+		var setImg = insertImg.setAttribute("src", "img/" + billImg + ".jpg");
+		img.appendChild(insertImg);
 	};
 	
 	function runDelete() {
