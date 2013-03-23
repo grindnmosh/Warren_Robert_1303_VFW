@@ -217,28 +217,28 @@ window.addEventListener("DOMContentLoaded", function() {
 		var recallData = JSON.parse(value);
 		switchPages("off");
 		displaySavedInfo("btype").value = recallData.btype[1];
-		displaySavedInfo("bname").value = recallData.bnData[1];
-		displaySavedInfo("amt").value = recallData.costData[1];
-		displaySavedInfo("prio").value = recallData.importance[1];
-		displaySavedInfo("due").value = recallData.whenData[1];
+		displaySavedInfo("bname").value = recallData.bname[1];
+		displaySavedInfo("amt").value = recallData.amt[1];
+		displaySavedInfo("prio").value = recallData.prio[1];
+		displaySavedInfo("due").value = recallData.due[1];
 		displaySavedInfo("freqs").value = recallData.freqs[1];
 		var radioSelected = document.forms[0].status;
 		for(i=0; i<radioSelected.length; i++) {
-			if(radioSelected[i].value == recallData.paid[1]) {
+			if(radioSelected[i].value == recallData.pd[1]) {
 				radioSelected[i].setAttribute("checked", "checked");
 			};
 		};
-		displaySavedInfo("pdwith").value = recallData.paymentCard[1];    	
-    	if(recallData.onTime[1] == "On Time") {
+		displaySavedInfo("pdwith").value = recallData.pdwith[1];    	
+    	if(recallData.ontime[1] == "On Time") {
 	    	displaySavedInfo("ontime").setAttribute("checked", "checked");
     	};
     	if(recallData.late[1] == "Late") {
 	    	displaySavedInfo("late").setAttribute("checked", "checked");
     	};
-    	if(recallData.lateFee[1] == "Late Fee") {
+    	if(recallData.lfee[1] == "Late Fee") {
 	    	displaySavedInfo("lfee").setAttribute("checked", "checked");
     	};
-		displaySavedInfo("textArea").value = recallData.comData[1];
+		displaySavedInfo("textArea").value = recallData.textArea[1];
 		saveBill.removeEventListener("click", validate);
 		displaySavedInfo("saveMe").value = "Edit Bill";
 		var changeSubmit = displaySavedInfo("saveMe");
