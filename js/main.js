@@ -138,18 +138,18 @@ window.addEventListener("DOMContentLoaded", function() {
 		getCheckBoxLate();
 		getCheckBoxLateFee();
 		var item = {};
-   			item.btData = ["Bill Type: ", displaySavedInfo("btype").value];
-    		item.bnData = ["Bill Name: ", displaySavedInfo("bname").value];
-    		item.importance = ["Bill Priority: ", displaySavedInfo("prio").value];
-    		item.costData = ["Bill Amount: $", displaySavedInfo("amt").value];
-   		 	item.whenData = ["Bill Due Date: ", displaySavedInfo("due").value];
+   			item.btype = ["Bill Type: ", displaySavedInfo("btype").value];
+    		item.bname = ["Bill Name: ", displaySavedInfo("bname").value];
+    		item.prio = ["Bill Priority: ", displaySavedInfo("prio").value];
+    		item.amt = ["Bill Amount: $", displaySavedInfo("amt").value];
+   		 	item.due = ["Bill Due Date: ", displaySavedInfo("due").value];
    		 	item.freqs = ["Bill Frequency: ", displaySavedInfo("freqs").value];
-    		item.paid = ["Paid: ", paidValue];
-   		 	item.paymentCard = ["Paid with: ", paymentValue];
-   		 	item.onTime = ["On time?: ", onTime];   		 	
+    		item.pd = ["Paid: ", paidValue];
+   		 	item.pdwith = ["Paid with: ", paymentValue];
+   		 	item.ontime = ["On time?: ", onTime];   		 	
    		 	item.late = ["Late?: ", late];
-   		 	item.lateFee = ["Late Fee?: ", lateFee];
-   		 	item.comData = ["Comments: ", displaySavedInfo("textArea").value];
+   		 	item.lfee = ["Late Fee?: ", lateFee];
+   		 	item.textArea = ["Comments: ", displaySavedInfo("textArea").value];
     	localStorage.setItem(id, JSON.stringify(item));
     	alert(saveSuccess);
   	 	saveMe.setAttribute("type", "reset");  
@@ -159,8 +159,8 @@ window.addEventListener("DOMContentLoaded", function() {
 	function getBill() {
 		switchPages("on"); 
 		if(localStorage.length === 0) {
-			alert("There is no data to view. Sample Data has been added.");
 			getSampleBills();
+			alert("There is no data to view. Sample Data has been added.");
 		};
 		var newDiv = document.createElement("div");
 		newDiv.setAttribute("id", "bill");
@@ -173,8 +173,8 @@ window.addEventListener("DOMContentLoaded", function() {
 			var buttons = document.createElement("li");
 			newList.appendChild(newItem);
 			var category = localStorage.key(i);
-			var input = localStorage.getItem(category);
-			var totalData = JSON.parse(input);
+			var value = localStorage.getItem(category);
+			var totalData = JSON.parse(value);
 			var newSub = document.createElement("ul");
 			newItem.appendChild(newSub);
 			loadImg(totalData.btype[1], newSub);
@@ -216,7 +216,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		var value = localStorage.getItem(this.key);
 		var recallData = JSON.parse(value);
 		switchPages("off");
-		displaySavedInfo("btype").value = recallData.btData[1];
+		displaySavedInfo("btype").value = recallData.btype[1];
 		displaySavedInfo("bname").value = recallData.bnData[1];
 		displaySavedInfo("amt").value = recallData.costData[1];
 		displaySavedInfo("prio").value = recallData.importance[1];
