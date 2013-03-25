@@ -51,7 +51,7 @@ li {
 }
 .billImg {
 	width: 100px;
-	margin: 20px;
+	margin: 40px 0px 40px 0px;
 	border: 2px solid blue;
 }
 form fieldset ul li {
