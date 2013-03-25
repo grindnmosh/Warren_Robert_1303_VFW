@@ -21,5 +21,6 @@ currently stores only on local storage till I learn to store to server. I have a
 Week 1 video: http://youtu.be/7zpahaEZ380
 Week 2 video: http://youtu.be/omy9Mpz4KcQ
 Week 3 video: http://youtu.be/-2euxI8pjI4
-Week 4 video:
+Week 4 video: http://youtu.be/S-PpZwURMW4
+
 

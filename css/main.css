@@ -50,9 +50,10 @@ li {
 	line-height: 2em;
 }
 .billImg {
-	width: 100px;
-	margin: 40px 0px 40px 0px;
-	border: 2px solid blue;
+  align: left;
+  width: 100px;
+  margin: 40px 0px 40px 0px;
+  border: 2px solid blue;
 }
 form fieldset ul li {
 	list-style: none;
